@@ -1,52 +1,97 @@
-# GSAP / WebGL Collection
+# GSAP / WebGL Animation Collection
 
-A curated collection of GSAP and WebGL animation examples for web developers.
+![GSAP Collection Banner](https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80)
 
-## 🚀 Overview
+A curated collection of stunning animations and visual effects created with GSAP (GreenSock Animation Platform) and WebGL. This project showcases various animation techniques that you can use in your web projects.
 
-This project showcases various animation techniques using GSAP (GreenSock Animation Platform) and WebGL. Each example includes detailed code snippets and explanations to help you implement these effects in your own projects.
+## 🚀 Demo
 
-## 🔧 Tech Stack
+Visit the live demo at [gsap-collection.vercel.app](https://gsap-collection.vercel.app)
+
+## ✨ Features
+
+- **Progressive Blur Effect**: Smooth transitions from sharp to blurred imagery
+- **Parallax Animations**: Depth-based movement effects
+- **Text Animations**: Character-by-character text reveals
+- **Scroll-triggered Effects**: Elements that animate as you scroll
+- **Interactive Elements**: Mouse-based interactions
+- **Responsive Design**: Works on all device sizes
+
+## 🛠️ Technologies Used
 
 - [Astro](https://astro.build) - Fast, modern web framework
 - [GSAP](https://greensock.com/gsap/) - Professional-grade animation library
-- WebGL - For hardware-accelerated graphics rendering
+- [ScrollTrigger](https://greensock.com/scrolltrigger/) - GSAP plugin for scroll-based animations
+- WebGL - Hardware-accelerated graphics rendering
 
-## 📋 Featured Projects
+## 📋 Project Structure
 
-1. **Progressive Blur** - A smooth transition effect that blurs content as users scroll
-2. **Project 002** - Coming soon
-3. **Project 003** - Coming soon
-4. **Project 004** - Coming soon
-5. **Project 005** - Coming soon
-
-## 🛠️ Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/GSAP-Collection.git
-
-# Navigate to the project directory
-cd GSAP-Collection
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
+```
+/
+├── public/
+│   └── global.css       # Global styles
+├── src/
+│   ├── components/      # UI components
+│   ├── layouts/         # Page layouts
+│   ├── pages/           # Route components
+│   └── utils/           # Utility functions
+└── package.json         # Project dependencies
 ```
 
-## 💻 Usage
+## 🚀 Getting Started
 
-Each project example includes:
-- Live demo
-- HTML, CSS, and JavaScript code snippets
-- Explanation of techniques used
+### Prerequisites
+
+- Node.js 16.x or higher
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/GSAP-Collection.git
+    cd GSAP-Collection
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+4. Open your browser and visit:
+    ```
+    http://localhost:4321
+    ```
+
+## 🧩 Included Animation Examples
+
+1. **Progressive Blur** - A smooth transition effect that creates a progressive blur as users scroll through content
+2. **Project 002** - Interactive parallax effects with mouse movement
+3. **Project 003** - Text animation with character splitting
+4. **Project 004** - Scroll-triggered sequence animations
+5. **Project 005** - WebGL shader effects with GSAP timelines
+
+## 💡 How to Use the Examples
+
+Each project page includes:
+
+- Live demo of the effect
+- Explanation of the technique
+- Complete code snippets (HTML, CSS, JavaScript)
 - Performance considerations
+- Implementation tips
+
+Simply copy the code from any example and integrate it into your own projects!
 
 ## 📚 Learning Resources
 
 - [GSAP Documentation](https://greensock.com/docs/)
+- [GSAP Easing Visualizer](https://greensock.com/ease-visualizer/)
 - [WebGL Fundamentals](https://webglfundamentals.org/)
 - [Three.js Journey](https://threejs-journey.com/)
 
