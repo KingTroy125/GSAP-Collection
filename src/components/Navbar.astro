@@ -1,7 +1,49 @@
+---
+---
 <nav class="navbar">
   <div class="navbar-left">KINGTROY</div>
   <div class="navbar-right">
     <a href="#" class="navbar-link">SUBSCRIBE</a>
-    <a href="#" class="navbar-link">GITHUB</a>
+    <a href="https://github.com/yourusername/GSAP-Collection" target="_blank" class="navbar-link">GITHUB</a>
   </div>
-</nav> 
+</nav>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add hover animations to navbar links
+    const navLinks = document.querySelectorAll('.navbar-link');
+    
+    navLinks.forEach(link => {
+      // Create a timeline for each link
+      const linkTl = gsap.timeline({ paused: true });
+      
+      // Create a line element for the underline effect
+      const underline = document.createElement('span');
+      underline.className = 'link-underline';
+      underline.style.position = 'absolute';
+      underline.style.bottom = '-3px';
+      underline.style.left = '0';
+      underline.style.width = '0%';
+      underline.style.height = '1px';
+      underline.style.backgroundColor = 'var(--accent)';
+      underline.style.transition = 'none';
+      
+      // Set link position to relative for positioning the underline
+      link.style.position = 'relative';
+      link.appendChild(underline);
+      
+      // Animate the underline
+      linkTl.to(underline, {
+        width: '100%',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+      
+      // Add event listeners
+      link.addEventListener('mouseenter', () => linkTl.play());
+      link.addEventListener('mouseleave', () => linkTl.reverse());
+    });
+  });
+</script>

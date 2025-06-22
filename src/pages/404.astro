@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Page Not Found | GSAP / WEBGL COLLECTION">
+  <div class="error-container">
+    <div class="error-code">404</div>
+    <div class="error-message">PAGE NOT FOUND</div>
+    <a href="/" class="back-link">BACK TO HOME</a>
+  </div>
+</Layout>
+
+<style>
+  .error-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .error-code {
+    font-size: 120px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin: 0;
+  }
+
+  .error-message {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin: 20px 0 40px;
+    letter-spacing: 2px;
+  }
+
+  .back-link {
+    font-size: 14px;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--text-muted);
+    padding: 12px 24px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Create a timeline for the 404 page animations
+    const errorTl = gsap.timeline();
+    
+    // Define glitch animation for the 404 number
+    const glitchAnimation = () => {
+      const errorCode = document.querySelector('.error-code');
+      
+      if (!errorCode) return;
+      
+      // Random offset amounts for glitch effect
+      const randomX = () => Math.random() * 10 - 5;
+      const randomY = () => Math.random() * 10 - 5;
+      
+      // Create RGB split effect elements
+      const createGlitchLayers = () => {
+        const container = document.createElement('div');
+        container.style.position = 'relative';
+        container.style.display = 'inline-block';
+        
+        // Original text
+        errorCode.style.position = 'relative';
+        errorCode.style.zIndex = '3';
+        
+        // Red layer
+        const redLayer = document.createElement('div');
+        redLayer.textContent = '404';
+        redLayer.className = 'glitch-red';
+        redLayer.style.position = 'absolute';
+        redLayer.style.top = '0';
+        redLayer.style.left = '0';
+        redLayer.style.color = '#ff0000';
+        redLayer.style.opacity = '0.8';
+        redLayer.style.zIndex = '1';
+        redLayer.style.mixBlendMode = 'multiply';
+        
+        // Blue layer
+        const blueLayer = document.createElement('div');
+        blueLayer.textContent = '404';
+        blueLayer.className = 'glitch-blue';
+        blueLayer.style.position = 'absolute';
+        blueLayer.style.top = '0';
+        blueLayer.style.left = '0';
+        blueLayer.style.color = '#0000ff';
+        blueLayer.style.opacity = '0.8';
+        blueLayer.style.zIndex = '2';
+        blueLayer.style.mixBlendMode = 'multiply';
+        
+        // Wrap original element content
+        const originalContent = errorCode.textContent;
+        const parent = errorCode.parentNode;
+        
+        // Replace with our container
+        parent.replaceChild(container, errorCode);
+        container.appendChild(errorCode);
+        container.appendChild(redLayer);
+        container.appendChild(blueLayer);
+      };
+      
+      createGlitchLayers();
+      
+      // Glitch animation function
+      const glitch = () => {
+        const redLayer = document.querySelector('.glitch-red');
+        const blueLayer = document.querySelector('.glitch-blue');
+        
+        if (!redLayer || !blueLayer) return;
+        
+        // Start with normal position
+        gsap.set([redLayer, blueLayer], { x: 0, y: 0 });
+        
+        // Random glitches
+        for (let i = 0; i < 5; i++) {
+          const startTime = i * 0.2;
+          
+          gsap.to(redLayer, {
+            x: randomX(),
+            y: randomY(),
+            duration: 0.1,
+            delay: startTime
+          });
+          
+          gsap.to(blueLayer, {
+            x: randomX(),
+            y: randomY(),
+            duration: 0.1,
+            delay: startTime
+          });
+          
+          // Reset briefly
+          gsap.to([redLayer, blueLayer], {
+            x: 0,
+            y: 0,
+            duration: 0.1,
+            delay: startTime + 0.1
+          });
+        }
+      };
+      
+      // Initial animation
+      errorTl
+        .from('.error-code', {
+          opacity: 0,
+          y: -50,
+          duration: 0.8,
+          onComplete: glitch
+        })
+        .from('.error-message', {
+          opacity: 0,
+          y: 30,
+          duration: 0.6
+        }, '-=0.4')
+        .from('.back-link', {
+          opacity: 0,
+          y: 20,
+          duration: 0.6
+        }, '-=0.2');
+      
+      // Repeat glitch periodically
+      setInterval(glitch, 3000);
+    };
+    
+    glitchAnimation();
+  });
+</script>

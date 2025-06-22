@@ -1,1 +1,102 @@
-<div class="more-coming">MORE COMING SOON</div> 
+---
+---
+<div class="more-coming">
+  <span class="more">MORE</span>
+  <span class="coming">COMING</span>
+  <span class="soon">SOON</span>
+</div>
+
+<style>
+  .more-coming {
+    margin: 120px 0;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    .more-coming {
+      font-size: 28px;
+      margin: 80px 0;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const textElements = document.querySelectorAll('.more, .coming, .soon');
+    
+    // Split the text into characters
+    textElements.forEach(element => {
+      const text = element.textContent;
+      element.textContent = '';
+      
+      // Create spans for each character
+      for (let i = 0; i < text.length; i++) {
+        const charSpan = document.createElement('span');
+        charSpan.classList.add('char');
+        charSpan.textContent = text[i];
+        charSpan.style.display = 'inline-block';
+        charSpan.style.opacity = '0';
+        element.appendChild(charSpan);
+      }
+    });
+    
+    // Create observer for animation trigger
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const chars = entry.target.querySelectorAll('.char');
+          
+          gsap.to(chars, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.05,
+            duration: 0.5,
+            ease: 'power2.out',
+            onComplete: () => {
+              // Add a subtle hover effect after animation
+              entry.target.addEventListener('mouseenter', () => {
+                gsap.to(chars, {
+                  y: -5,
+                  color: 'var(--accent)',
+                  stagger: 0.02,
+                  duration: 0.3,
+                  ease: 'power2.out'
+                });
+              });
+              
+              entry.target.addEventListener('mouseleave', () => {
+                gsap.to(chars, {
+                  y: 0,
+                  color: 'var(--text-muted)',
+                  stagger: 0.02,
+                  duration: 0.3,
+                  ease: 'power2.out'
+                });
+              });
+            }
+          });
+          
+          // Only trigger once
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    // Observe all text elements
+    textElements.forEach(element => {
+      gsap.set(element.querySelectorAll('.char'), { opacity: 0, y: 20 });
+      observer.observe(element);
+    });
+  });
+</script>

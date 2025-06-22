@@ -1,32 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import '/global.css';
-layout: Layout
+import ProjectAnimation from '../components/ProjectAnimation.astro';
 ---
-<nav class="navbar">
-  <a href="/" class="navbar-left">KINGTROY</a>
-  <a href="/" class="back-arrow">←</a>
-</nav>
-<div class="container">
-  <div class="project-header">
-    <div class="project-category">GSAP / WEBGL</div>
-    <h1 class="project-title">PROGRESSIVE BLUR</h1>
-  </div>
-  <div class="project-media">
-    <img class="project-image" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80" alt="Progressive Blur Demo">
-  </div>
-  <div class="project-notes">
-    <h2 class="notes-title">PROJECT NOTE HERE</h2>
-    <p class="notes-content">
-      This progressive blur effect uses GSAP and WebGL shaders to create a smooth transition from sharp to blurred imagery. The effect responds to scroll position and mouse movement, creating an immersive visual experience. Perfect for hero sections and interactive backgrounds.
-    </p>
-  </div>
-  <div class="code-section">
-    <div class="code-header">
-      <span class="code-title">HTML</span>
-      <button class="copy-btn" onclick="copyCode('html-code')">Copy</button>
+<Layout title="Progressive Blur | GSAP / WEBGL COLLECTION">
+  <nav class="navbar">
+    <a href="/" class="navbar-left">KINGTROY</a>
+    <a href="/" class="back-arrow">←</a>
+  </nav>
+  <div class="container">
+    <div class="project-header">
+      <div class="project-category">GSAP / WEBGL</div>
+      <h1 class="project-title">PROGRESSIVE BLUR</h1>
     </div>
-    <div class="code-content" id="html-code"><pre><code>&lt;!DOCTYPE html&gt;
+    <div class="project-media">
+      <img class="project-image" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80" alt="Progressive Blur Demo">
+    </div>
+    <div class="project-notes">
+      <h2 class="notes-title">PROJECT NOTE HERE</h2>
+      <p class="notes-content">
+        This progressive blur effect uses GSAP and WebGL shaders to create a smooth transition from sharp to blurred imagery. The effect responds to scroll position and mouse movement, creating an immersive visual experience. Perfect for hero sections and interactive backgrounds.
+      </p>
+    </div>
+    <div class="code-section">
+      <div class="code-header">
+        <span class="code-title">HTML</span>
+        <button class="copy-btn" onclick="copyCode('html-code')">Copy</button>
+      </div>
+      <div class="code-content" id="html-code"><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -43,21 +43,20 @@ layout: Layout
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre></div>
-  </div>
-  <div class="code-section">
-    <div class="code-header">
-      <span class="code-title">CSS</span>
-      <button class="copy-btn" onclick="copyCode('css-code')">Copy</button>
     </div>
-    <div class="code-content" id="css-code"><pre><code>/* CSS is handled globally in /global.css */
-</code></pre></div>
-  </div>
-  <div class="code-section">
-    <div class="code-header">
-      <span class="code-title">JavaScript</span>
-      <button class="copy-btn" onclick="copyCode('js-code')">Copy</button>
+    <div class="code-section">
+      <div class="code-header">
+        <span class="code-title">CSS</span>
+        <button class="copy-btn" onclick="copyCode('css-code')">Copy</button>
+      </div>
+      <div class="code-content" id="css-code"><pre><code>/* CSS is handled globally in /global.css */</code></pre></div>
     </div>
-    <div class="code-content" id="js-code"><pre><code>// Progressive Blur Effect with GSAP and WebGL
+    <div class="code-section">
+      <div class="code-header">
+        <span class="code-title">JavaScript</span>
+        <button class="copy-btn" onclick="copyCode('js-code')">Copy</button>
+      </div>
+      <div class="code-content" id="js-code"><pre><code>// Progressive Blur Effect with GSAP and WebGL
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -118,25 +117,23 @@ class ProgressiveBlur {
 }
 
 // Initialize the effect
-new ProgressiveBlur();
-</code></pre></div>
+new ProgressiveBlur();</code></pre></div>
+    </div>
   </div>
-</div>
-<script>
-  function copyCode(elementId) {
-    const codeElement = document.getElementById(elementId);
-    const text = codeElement.textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      const button = codeElement.previousElementSibling.querySelector('.copy-btn');
-      const originalText = button.textContent;
-      button.textContent = 'Copied!';
-      button.classList.add('copied');
+  
+  <script>
+    // Function to copy code blocks
+    function copyCode(id) {
+      const codeBlock = document.getElementById(id);
+      const code = codeBlock.textContent;
+      navigator.clipboard.writeText(code);
+      
+      const copyBtn = codeBlock.parentElement.querySelector('.copy-btn');
+      copyBtn.textContent = 'Copied!';
       setTimeout(() => {
-        button.textContent = originalText;
-        button.classList.remove('copied');
+        copyBtn.textContent = 'Copy';
       }, 2000);
-    }).catch(err => {
-      console.error('Failed to copy text: ', err);
-    });
-  }
-</script> 
+    }
+  </script>
+  <ProjectAnimation />
+</Layout>

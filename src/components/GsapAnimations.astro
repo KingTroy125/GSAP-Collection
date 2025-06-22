@@ -1,0 +1,93 @@
+---
+---
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Hero section animation
+    const heroTl = gsap.timeline();
+    heroTl
+      .from('.hero-by', { 
+        opacity: 0, 
+        y: 20, 
+        duration: 0.8,
+        ease: 'power3.out' 
+      })
+      .from('.hero-mid', { 
+        opacity: 0, 
+        y: 30, 
+        duration: 0.8, 
+        ease: 'power3.out' 
+      }, '-=0.6')
+      .from('.hero-title', { 
+        opacity: 0, 
+        y: 40, 
+        duration: 0.8,
+        ease: 'power3.out' 
+      }, '-=0.6');
+
+    // Navbar animation
+    gsap.from('.navbar', {
+      opacity: 0,
+      y: -20,
+      duration: 1,
+      ease: 'power2.out'
+    });
+
+    // Project cards animation with staggered effect
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    if (projectCards.length > 0) {
+      gsap.set(projectCards, { y: 60, opacity: 0 });
+      
+      ScrollTrigger.batch(projectCards, {
+        onEnter: batch => {
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power2.out",
+          });
+        },
+        start: "top 85%",
+      });
+    }
+
+    // Initialize project text - make sure it's visible by default
+    document.querySelectorAll('.project-card').forEach(card => {
+      const projectNumber = card.querySelector('.project-number');
+      const projectName = card.querySelector('.project-name');
+      
+      if (projectNumber && projectName) {
+        gsap.set([projectNumber, projectName], { 
+          opacity: 1, 
+          y: 0 
+        });
+      }
+    });
+
+    // More Coming section animation
+    const moreComingSection = document.querySelector('.more-coming');
+    if (moreComingSection) {
+      ScrollTrigger.create({
+        trigger: moreComingSection,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.from(moreComingSection, {
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            ease: "power2.out"
+          });
+        },
+        once: true
+      });
+    }
+  });
+</script>

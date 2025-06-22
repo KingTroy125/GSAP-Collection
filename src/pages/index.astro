@@ -1,19 +1,17 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Projects from '../components/Projects.astro';
 import MoreComing from '../components/MoreComing.astro';
-import '../../public/global.css';
+import GsapAnimations from '../components/GsapAnimations.astro';
 ---
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GSAP / WEBGL COLLECTION | KingTroy</title>
-</head>
-
-<Navbar />
-<main class="main">
-  <Hero />
-  <Projects />
-  <MoreComing />
-</main>
+<Layout title="GSAP / WEBGL COLLECTION | KingTroy">
+  <Navbar />
+  <main class="main">
+    <Hero />
+    <Projects />
+    <MoreComing />
+  </main>
+  <GsapAnimations />
+</Layout>

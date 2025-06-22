@@ -1,5 +1,126 @@
+---
+---
 <div class="hero">
   <div class="hero-by">by KingTroy</div>
   <div class="hero-mid">GSAP <span style="color:#b0b0b0;font-weight:400;">/</span> WEBGL</div>
   <div class="hero-title">COLLECTION</div>
-</div> 
+  <div class="hero-scroll-indicator">
+    <div class="scroll-text">SCROLL</div>
+    <div class="scroll-arrow">↓</div>
+  </div>
+</div>
+
+<style>
+  .hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+  }
+  
+  .scroll-arrow {
+    margin-top: 8px;
+    font-size: 18px;
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      height: 70vh;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate the scroll indicator
+    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
+    
+    if (scrollIndicator) {
+      // Initial animation
+      gsap.from(scrollIndicator, {
+        opacity: 0,
+        y: -20,
+        duration: 1,
+        delay: 1.5,
+        ease: 'power2.out'
+      });
+      
+      // Continuous bouncing animation for the arrow
+      gsap.to('.scroll-arrow', {
+        y: 10,
+        duration: 1.2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut'
+      });
+      
+      // Hide scroll indicator when user scrolls down
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          gsap.to(scrollIndicator, {
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power2.out'
+          });
+        } else {
+          gsap.to(scrollIndicator, {
+            opacity: 1,
+            duration: 0.5,
+            ease: 'power2.out'
+          });
+        }
+      });
+    }
+    
+    // Add a parallax effect on mouse move
+    const hero = document.querySelector('.hero');
+    const heroElements = document.querySelectorAll('.hero-by, .hero-mid, .hero-title');
+    
+    if (hero && heroElements.length > 0) {
+      hero.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const { width, height } = hero.getBoundingClientRect();
+        
+        // Calculate mouse position relative to center of hero
+        const xPos = (clientX / width - 0.5);
+        const yPos = (clientY / height - 0.5);
+        
+        // Apply different parallax amount to each element
+        heroElements.forEach((el, index) => {
+          const depth = 15 + (index * 10); // Increasing depth for each element
+          gsap.to(el, {
+            x: xPos * depth,
+            y: yPos * depth,
+            duration: 1,
+            ease: 'power2.out'
+          });
+        });
+      });
+      
+      // Reset position when mouse leaves
+      hero.addEventListener('mouseleave', () => {
+        gsap.to(heroElements, {
+          x: 0,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out'
+        });
+      });
+    }
+  });
+</script>
