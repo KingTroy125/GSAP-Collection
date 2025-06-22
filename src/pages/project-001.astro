@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '/global.css';
+layout: Layout
+---
+<nav class="navbar">
+  <a href="/" class="navbar-left">KINGTROY</a>
+  <a href="/" class="back-arrow">←</a>
+</nav>
+<div class="container">
+  <div class="project-header">
+    <div class="project-category">GSAP / WEBGL</div>
+    <h1 class="project-title">PROGRESSIVE BLUR</h1>
+  </div>
+  <div class="project-media">
+    <img class="project-image" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80" alt="Progressive Blur Demo">
+  </div>
+  <div class="project-notes">
+    <h2 class="notes-title">PROJECT NOTE HERE</h2>
+    <p class="notes-content">
+      This progressive blur effect uses GSAP and WebGL shaders to create a smooth transition from sharp to blurred imagery. The effect responds to scroll position and mouse movement, creating an immersive visual experience. Perfect for hero sections and interactive backgrounds.
+    </p>
+  </div>
+  <div class="code-section">
+    <div class="code-header">
+      <span class="code-title">HTML</span>
+      <button class="copy-btn" onclick="copyCode('html-code')">Copy</button>
+    </div>
+    <div class="code-content" id="html-code"><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Progressive Blur Effect&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;canvas id="canvas"&gt;&lt;/canvas&gt;
+        &lt;div class="content"&gt;
+            &lt;h1&gt;Progressive Blur&lt;/h1&gt;
+            &lt;p&gt;Scroll to see the effect&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+  </div>
+  <div class="code-section">
+    <div class="code-header">
+      <span class="code-title">CSS</span>
+      <button class="copy-btn" onclick="copyCode('css-code')">Copy</button>
+    </div>
+    <div class="code-content" id="css-code"><pre><code>/* CSS is handled globally in /global.css */
+</code></pre></div>
+  </div>
+  <div class="code-section">
+    <div class="code-header">
+      <span class="code-title">JavaScript</span>
+      <button class="copy-btn" onclick="copyCode('js-code')">Copy</button>
+    </div>
+    <div class="code-content" id="js-code"><pre><code>// Progressive Blur Effect with GSAP and WebGL
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+class ProgressiveBlur {
+    constructor() {
+        this.canvas = document.getElementById('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.image = new Image();
+        this.blurAmount = 0;
+        
+        this.init();
+    }
+    
+    init() {
+        this.setupCanvas();
+        this.loadImage();
+        this.setupScrollTrigger();
+    }
+    
+    setupCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight;
+            this.render();
+        });
+    }
+    
+    loadImage() {
+        this.image.onload = () => {
+            this.render();
+        };
+        this.image.src = 'path/to/your/image.jpg';
+    }
+    
+    setupScrollTrigger() {
+        ScrollTrigger.create({
+            trigger: '.container',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true,
+            onUpdate: (self) => {
+                this.blurAmount = self.progress * 20;
+                this.render();
+            }
+        });
+    }
+    
+    render() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.filter = `blur(${this.blurAmount}px)`;
+        this.ctx.drawImage(this.image, 0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+// Initialize the effect
+new ProgressiveBlur();
+</code></pre></div>
+  </div>
+</div>
+<script>
+  function copyCode(elementId) {
+    const codeElement = document.getElementById(elementId);
+    const text = codeElement.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const button = codeElement.previousElementSibling.querySelector('.copy-btn');
+      const originalText = button.textContent;
+      button.textContent = 'Copied!';
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('copied');
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+</script> 

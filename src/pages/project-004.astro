@@ -1,0 +1,70 @@
+import '/global.css';
+---
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project 004 | KingTroy</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,400&display=swap" rel="stylesheet">
+</head>
+<nav class="navbar">
+  <a href="/" class="navbar-left">KINGTROY</a>
+  <a href="/" class="back-arrow">←</a>
+</nav>
+<div class="container">
+  <div class="project-header">
+    <div class="project-category">GSAP / WEBGL</div>
+    <h1 class="project-title">PROJECT NAME 004</h1>
+  </div>
+  <div class="project-media">
+    <img class="project-image" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80" alt="Project 004 Demo">
+  </div>
+  <div class="project-notes">
+    <h2 class="notes-title">PROJECT NOTE HERE</h2>
+    <p class="notes-content">
+      Description for project 004 goes here. Replace with real content.
+    </p>
+  </div>
+  <div class="code-section">
+    <div class="code-header">
+      <span class="code-title">HTML</span>
+      <button class="copy-btn" onclick="copyCode('html-code')">Copy</button>
+    </div>
+    <div class="code-content" id="html-code"><pre><code>&lt;!-- HTML code for project 004 --&gt;
+</code></pre></div>
+  </div>
+  <div class="code-section">
+    <div class="code-header">
+      <span class="code-title">CSS</span>
+      <button class="copy-btn" onclick="copyCode('css-code')">Copy</button>
+    </div>
+    <div class="code-content" id="css-code"><pre><code>/* CSS code for project 004 */
+</code></pre></div>
+  </div>
+  <div class="code-section">
+    <div class="code-header">
+      <span class="code-title">JavaScript</span>
+      <button class="copy-btn" onclick="copyCode('js-code')">Copy</button>
+    </div>
+    <div class="code-content" id="js-code"><pre><code>// JavaScript code for project 004
+</code></pre></div>
+  </div>
+</div>
+<script>
+  function copyCode(elementId) {
+    const codeElement = document.getElementById(elementId);
+    const text = codeElement.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const button = codeElement.previousElementSibling.querySelector('.copy-btn');
+      const originalText = button.textContent;
+      button.textContent = 'Copied!';
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('copied');
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+</script> 
