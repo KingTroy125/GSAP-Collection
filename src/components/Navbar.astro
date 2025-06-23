@@ -3,8 +3,8 @@
 <nav class="navbar">
   <div class="navbar-left">KINGTROY</div>
   <div class="navbar-right">
-    <a href="#" class="navbar-link">SUBSCRIBE</a>
-    <a href="https://github.com/yourusername/GSAP-Collection" target="_blank" class="navbar-link">GITHUB</a>
+    <a href="https://www.youtube.com/@KingTroy125" class="navbar-link">SUBSCRIBE</a>
+    <a href="https://github.com/KingTroy125" target="_blank" class="navbar-link">GITHUB</a>
   </div>
 </nav>
 
@@ -12,10 +12,15 @@
   import { gsap } from 'gsap';
   
   document.addEventListener('DOMContentLoaded', () => {
-    // Add hover animations to navbar links
+    // Add hover animations to navbar links only (not KINGTROY or back arrow)
     const navLinks = document.querySelectorAll('.navbar-link');
     
     navLinks.forEach(link => {
+      // Skip if this is the KINGTROY text or back arrow
+      if (link.classList.contains('navbar-left') || link.classList.contains('back-arrow')) {
+        return;
+      }
+      
       // Create a timeline for each link
       const linkTl = gsap.timeline({ paused: true });
       
