@@ -1,6 +1,6 @@
 # GSAP / WebGL Animation Collection
 
-![GSAP Collection Banner](https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80)
+![GSAP Collection Banner](https://www.youtube.com/@KingTroy125)
 
 A curated collection of stunning animations and visual effects created with GSAP (GreenSock Animation Platform) and WebGL. This project showcases various animation techniques that you can use in your web projects.
 
