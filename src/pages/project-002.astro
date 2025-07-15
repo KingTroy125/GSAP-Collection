@@ -26,7 +26,7 @@ With smooth transitions, bold typography, and a dark/light mode option, this UI 
     <div class="code-section">
       <div class="code-header">
         <span class="code-title">HTML</span>
-        <button class="copy-btn" onclick="copyCode('html-code')">Copy</button>
+        <button class="copy-btn" data-target="html-code">Copy</button>
       </div>
       <div class="code-content" id="html-code"><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -93,219 +93,163 @@ With smooth transitions, bold typography, and a dark/light mode option, this UI 
     <div class="code-section">
       <div class="code-header">
         <span class="code-title">CSS</span>
-        <button class="copy-btn" onclick="copyCode('css-code')">Copy</button>
+        <button class="copy-btn" data-target="css-code">Copy</button>
       </div>
-      <div class="code-content" id="css-code"><pre><code>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
-
-*&#123;
+      <div class="code-content" id="css-code"><pre><code>* &#123;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 &#125;
-body&#123;
-    box-sizing: border-box;
+
+html, body &#123;
+    width: 100%;
+    height: 100%;
+    font-family: "Neue Montreal";
+&#125;
+
+.cursor &#123;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    z-index: 1000;
+    pointer-events: none;
+    color: #000;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+&#125;
+
+nav &#123;
+    position: fixed;
+    width: 100%;
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+&#125;
+
+img &#123;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+&#125;
+
+.container &#123;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
 &#125;
-.animation&#123;
+
+.overlay &#123;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    z-index: 90;
-    background-color: rgb(124, 124, 124);
+    height: 100%;
+    overflow: hidden;
 &#125;
-section&#123;
-    width: 100%;
-    height: 100vh;
-    background-color: #FFFAF0;
-    transition: 1s ease-in-out;
-&#125;
-section.active&#123;
-    transition: 1s ease-in-out;
-    background-color: #1b1b1e;
-    color: white;
-&#125;
-section.active a&#123;
-    transition:  2s ease-in-out;
-    transition-delay: 0.5s;
-    color: white;
-&#125;
-section.active .year&#123;
-    color: white;
-&#125;
-section.active .theme&#123;
-    color: white;
-&#125;
-section.active #dark&#123;
-    opacity: 0;
-&#125;
-section.active #light&#123;
-    opacity: 1;
-&#125;
-header&#123;
+
+.marquee-wrapper &#123;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    display: flex;
-    height: 100px;
-    justify-content: space-between;
-    align-items: center;
+    height: 100%;
+    background: #fff;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 &#125;
-.year&#123;
+
+.marquee-wrapper.t-1 &#123;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
+&#125;
+
+h1 &#123;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: black;
-    letter-spacing: 0.1em;
-&#125;
-.logo&#123;
-    margin-left: 50px;
-&#125;
-.logo a&#123;
-    text-decoration: none;
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    letter-spacing: 0.1em;
+    top: 50%;
+    left: -100%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 240px;
     text-transform: uppercase;
-&#125;
-header ul&#123;
-    list-style: none;
-    display: flex;
-    margin-right: 50px;
-&#125;
-header ul li&#123;
-    margin: 0 13px;
-&#125;
-header ul li a&#123;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
     font-weight: 400;
-    color: black;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    width: 100%;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
 &#125;
-.heroImg&#123;
+
+@keyframes marquee &#123;
+    0% &#123; transform: translate(0%, -50%);&#125;
+    50% &#123; transform: translate(-5%, -50%);&#125;
+    50.5% &#123; transform: translate(-5%, -50%);&#125;
+    100% &#123; transform: translate(0%, -50%); &#125;
+&#125;
+
+.model &#123;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    height: 70vh;
-    width: 350px;
-    background: url('hero.jpg') no-repeat 50% 50%;
-    background-size: cover;
-    opacity: 0.8s;
-    transition: 1s ease-in-out;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 700px;
 &#125;
-.heroImg:hover&#123;
-    transition: 1s ease-in-out;
-    opacity: 1;
-&#125;
-.container&#123;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.modal-images &#123;
     width: 100%;
-    flex-direction: column;
-    height: 100vh;
+    height: 600px;
 &#125;
-.container p&#123;
-    z-index: 25;
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 400;
-    font-style: italic;
-    text-align: center;
+
+.role &#123;
+    margin: 5px 0;
 &#125;
-.container h1&#123;
-    font-family: 'Inter', sans-serif;
-    font-size: 100px;
-    font-weight: 400;
-    text-align: center;
-    letter-spacing: 0.05em;
-&#125;
-.h1animate&#123;
-    z-index: 100;
-&#125;
-.social&#123;
+
+.img &#123;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-evenly;
-    width: 300px;
-    height: 50px;
+    width: 100%;
+    height: 600px;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 &#125;
-.social a&#123;
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+
+.img#t-1 &#123;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
 &#125;
-.theme&#123;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    width: 200px;
-    height: 50px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: black;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    align-items: center;
+
+.info &#123;
+    margin-top: 24px;
 &#125;
-#dark&#123;
-    cursor: pointer;
+
+.t-1 &#123;
+    background: #fff;
 &#125;
-#light&#123;
-    cursor: pointer;
-    opacity: 0;
+
+.t-2 &#123;
+    background: #c4bca9;
 &#125;
-section a&#123;
-    transition: 2s ease-in-out;
+
+.t-3 &#123;
+    background: #fff;
 &#125;
-@media(max-width: 706px)&#123;
-    .container p&#123;
-        font-size: 13px;
-    &#125;
-    .social&#123;
-        width: 200px;
-    &#125;
-    .social a&#123;
-        font-size: 8px;
-    &#125;
-    .container h1&#123;
-        font-size: 80px;
-    &#125;
-    header&#123;
-        height: 80px;
-    &#125;
-    .logo&#123;
-        margin-left: 20px;
-    &#125;
-    header ul&#123;
-        margin-right: 20px;
-    &#125;
+
+.t-4 &#123;
+    background: #8e908a;
 &#125;
-@media (max-width: 462px)&#123;
-    .container&#123;
-        margin-right: 20px;
-        margin-left: 40px ;
+
+@media(max-width: 900px) &#123;
+    .model &#123;
+        width: 400px;
+        height: 600px;
+    &#125;
+
+    .modal-images &#123;
+        width: 100%;
+        height: 500px;
+    &#125;
+
+    .img &#123;
+        width: 100%;
+        height: 500px;
     &#125;
 &#125;
 </code></pre></div>
@@ -313,26 +257,26 @@ section a&#123;
     <div class="code-section">
       <div class="code-header">
         <span class="code-title">JavaScript</span>
-        <button class="copy-btn" onclick="copyCode('js-code')">Copy</button>
+        <button class="copy-btn" data-target="js-code">Copy</button>
       </div>
-      <div class="code-content" id="js-code"><pre><code>const team = [
-    &#123; name: "Ava Sinclair", role: "Creative Director" &#125;,
-    &#123; name: "Emma Bennett", role: "Brand Strategist" &#125;,
-    &#123; name: "Zoe Clementine", role: "Lead Designer" &#125;,
-    &#123; name: "Mia Thompson", role: "Marketing Specialist" &#125;,
+      <div class="code-content" id="js-code"><pre><code>&#x63;&#x6F;&#x6E;&#x73;&#x74; team = [
+    &#123; name: &quot;Ava Sinclair&quot;, role: &quot;Creative Director&quot; &#125;,
+    &#123; name: &quot;Emma Bennett&quot;, role: &quot;Brand Strategist&quot; &#125;,
+    &#123; name: &quot;Zoe Clementine&quot;, role: &quot;Lead Designer&quot; &#125;,
+    &#123; name: &quot;Mia Thompson&quot;, role: &quot;Marketing Specialist&quot; &#125;,
 ];
 
-const cursor = document.querySelector('.cursor');
-const cursorIcon = cursor.querySelector('i');
+&#x63;&#x6F;&#x6E;&#x73;&#x74; cursor = document.querySelector('.cursor');
+&#x63;&#x6F;&#x6E;&#x73;&#x74; cursorIcon = cursor.querySelector('i');
 
-const cursorWidth = cursor.offsetWidth / 2;
-const cursorHeight = cursor.offsetHeight / 2;
+&#x63;&#x6F;&#x6E;&#x73;&#x74; cursorWidth = cursor.offsetWidth / 2;
+&#x63;&#x6F;&#x6E;&#x73;&#x74; cursorHeight = cursor.offsetHeight / 2;
 
 let currentSlide = 1;
-const totalSlides = 4;
+&#x63;&#x6F;&#x6E;&#x73;&#x74; totalSlides = 4;
 
-const updateCursorClass = (xPosition) => &#123;
-    const halfPageWidth = window.innerWidth / 2;
+&#x63;&#x6F;&#x6E;&#x73;&#x74; updateCursorClass = (xPosition) =&gt; &#123;
+    &#x63;&#x6F;&#x6E;&#x73;&#x74; halfPageWidth = window.innerWidth / 2;
     if (xPosition &gt; halfPageWidth) &#123;
         if (currentSlide &lt; totalSlides) &#123;
             cursorIcon.classList.remove('ph-arrow-left');
@@ -352,7 +296,7 @@ const updateCursorClass = (xPosition) => &#123;
     &#125;
 &#125;
 
-document.addEventListener('mousemove', (e) => &#123;
+document.addEventListener('mousemove', (e) =&gt; &#123;
     gsap.to(cursor, &#123;
         x: e.clientX - cursorWidth,
         y: e.clientY - cursorHeight,
@@ -363,16 +307,16 @@ document.addEventListener('mousemove', (e) => &#123;
     updateCursorClass(e.clientX);
 &#125;);
 
-const updateInfo = (slideNumber) => &#123;
-    const member = team[slideNumber - 1];
+&#x63;&#x6F;&#x6E;&#x73;&#x74; updateInfo = (slideNumber) =&gt; &#123;
+    &#x63;&#x6F;&#x6E;&#x73;&#x74; member = team[slideNumber - 1];
     document.querySelector('.info .name').textContent = member.name;
     document.querySelector('.info .role').textContent = member.role;
 &#125;;
 
-const animateSlide = (slideNumber, reveal) => &#123;
-    const marquee = document.querySelector(`.t-${slideNumber}.marquee-wrapper`);
-    const img = document.getElementById(`t-${slideNumber}`);
-    const clipPathValue = reveal ? 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)' : 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)';
+&#x63;&#x6F;&#x6E;&#x73;&#x74; animateSlide = (slideNumber, reveal) =&gt; &#123;
+    &#x63;&#x6F;&#x6E;&#x73;&#x74; marquee = document.querySelector(`.t-&#36;&#123;slideNumber&#125;.marquee-wrapper`);
+    &#x63;&#x6F;&#x6E;&#x73;&#x74; img = document.getElementById(`t-&#36;&#123;slideNumber&#125;`);
+    &#x63;&#x6F;&#x6E;&#x73;&#x74; clipPathValue = reveal ? 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)' : 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)';
 
     gsap.to(marquee, &#123; clipPath: clipPathValue, duration: 1, ease: 'power4.out', delay: 0.3 &#125;);
     gsap.to(img, &#123; clipPath: clipPathValue, duration: 1, ease: 'power4.out' &#125;);
@@ -380,7 +324,7 @@ const animateSlide = (slideNumber, reveal) => &#123;
 
 updateInfo(currentSlide);
 
-const handleRightClick = () => &#123; 
+&#x63;&#x6F;&#x6E;&#x73;&#x74; handleRightClick = () =&gt; &#123; 
     if (currentSlide &lt; totalSlides) &#123;
         animateSlide(currentSlide + 1, true);
         currentSlide++;
@@ -388,7 +332,7 @@ const handleRightClick = () => &#123;
     &#125;
 &#125;
 
-const handleLeftClick = () => &#123;
+&#x63;&#x6F;&#x6E;&#x73;&#x74; handleLeftClick = () =&gt; &#123;
     if (currentSlide &gt; 1) &#123;
         animateSlide(currentSlide, false);
         currentSlide--;
@@ -396,8 +340,8 @@ const handleLeftClick = () => &#123;
     &#125;
 &#125;
 
-document.addEventListener('click', (e) => &#123;
-    const halfPageWidth = window.innerWidth / 2;
+document.addEventListener('click', (e) =&gt; &#123;
+    &#x63;&#x6F;&#x6E;&#x73;&#x74; halfPageWidth = window.innerWidth / 2;
     if (e.clientX &gt; halfPageWidth) &#123;
         handleRightClick();
     &#125; else &#123;
@@ -409,3 +353,29 @@ document.addEventListener('click', (e) => &#123;
   </div>
   <ProjectAnimation />
 </Layout>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const codeId = btn.getAttribute('data-target');
+      const code = document.getElementById(codeId).innerText;
+      try {
+        await navigator.clipboard.writeText(code);
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 1200);
+      } catch (err) {
+        btn.textContent = 'Error';
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+        }, 1200);
+      }
+    });
+  });
+});
+</script>
