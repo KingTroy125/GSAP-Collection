@@ -10,15 +10,17 @@ import ProjectAnimation from '../components/ProjectAnimation.astro';
   <div class="container">
     <div class="project-header">
       <div class="project-category">GSAP / WEBGL</div>
-      <h1 class="project-title">PROJECT NAME 002</h1>
+      <h1 class="project-title">Animated Responsive Landing Page Website using GSAP</h1>
     </div>
     <div class="project-media">
-      <img class="project-image" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80" alt="Project 002 Demo">
+      <img class="project-image" src="assets/img_2.jpg" alt="Project 002 Demo">
     </div>
     <div class="project-notes">
-      <h2 class="notes-title">PROJECT NOTE HERE</h2>
+      <h2 class="notes-title"></h2>
       <p class="notes-content">
-        Description for project 002 goes here. Replace with real content.
+        Design a modern, animated, and fully responsive landing page using GSAP, HTML, CSS, and JavaScript. This clean and elegant layout is built for creative studios, personal portfolios, or businesses that want a sleek digital presence with immersive motion design.
+
+With smooth transitions, bold typography, and a dark/light mode option, this UI concept balances visual hierarchy and animation finesse — creating a high-end experience that feels both professional and refined.
       </p>
     </div>
     <div class="code-section">
@@ -26,7 +28,66 @@ import ProjectAnimation from '../components/ProjectAnimation.astro';
         <span class="code-title">HTML</span>
         <button class="copy-btn" onclick="copyCode('html-code')">Copy</button>
       </div>
-      <div class="code-content" id="html-code"><pre><code>&lt;!-- HTML code for project 002 --&gt;
+      <div class="code-content" id="html-code"><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;CG Team Page Using GSAP | KingTroy&lt;/title&gt;
+    &lt;script src=&quot;https://unpkg.com/@phosphor-icons/web&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav&gt;
+        &lt;div class=&quot;logo&quot;&gt;&lt;p&gt;KingTroy Studio&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;btn&quot;&gt;&lt;p&gt;Showreel&lt;/p&gt;&lt;/div&gt;
+    &lt;/nav&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;overlay&quot;&gt;
+            &lt;div class=&quot;t-1 marquee-wrapper&quot;&gt;
+                &lt;h1&gt;Ava Sinclair Ava Sinclair Ava Sinclair&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;t-2 marquee-wrapper&quot;&gt;
+                &lt;h1&gt;Emma Bennett Emma Bennett Emma Bennett&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;t-3 marquee-wrapper&quot;&gt;
+                &lt;h1&gt;Zoe Clementine Zoe Clementine Zoe Clementine&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;t-4 marquee-wrapper&quot;&gt;
+                &lt;h1&gt;Mia Thompson Mia Thompson Mia Thompson&lt;/h1&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;model&quot;&gt;
+            &lt;div class=&quot;modal-images&quot;&gt;
+                &lt;div class=&quot;img&quot; id=&quot;t-1&quot;&gt;
+                    &lt;img src=&quot;team-1.jpg&quot; alt=&quot;&quot;/&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;img&quot; id=&quot;t-2&quot;&gt;
+                    &lt;img src=&quot;team-2.jpg&quot; alt=&quot;&quot;/&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;img&quot; id=&quot;t-3&quot;&gt;
+                    &lt;img src=&quot;team-3.jpg&quot; alt=&quot;&quot;/&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;img&quot; id=&quot;t-4&quot;&gt;
+                    &lt;img src=&quot;team-4.jpg&quot; alt=&quot;&quot;/&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;info&quot;&gt;
+                &lt;p class=&quot;name&quot;&gt;Ava Sinclair&lt;/p&gt;
+                &lt;p class=&quot;role&quot;&gt;Creative Director&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;cursor&quot;&gt;
+        &lt;i class=&quot;ph-light ph-arrow-left&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre></div>
     </div>
     <div class="code-section">
@@ -34,7 +95,219 @@ import ProjectAnimation from '../components/ProjectAnimation.astro';
         <span class="code-title">CSS</span>
         <button class="copy-btn" onclick="copyCode('css-code')">Copy</button>
       </div>
-      <div class="code-content" id="css-code"><pre><code>/* CSS code for project 002 */
+      <div class="code-content" id="css-code"><pre><code>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+*&#123;
+    margin: 0;
+    padding: 0;
+&#125;
+body&#123;
+    box-sizing: border-box;
+    overflow: hidden;
+&#125;
+.animation&#123;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 90;
+    background-color: rgb(124, 124, 124);
+&#125;
+section&#123;
+    width: 100%;
+    height: 100vh;
+    background-color: #FFFAF0;
+    transition: 1s ease-in-out;
+&#125;
+section.active&#123;
+    transition: 1s ease-in-out;
+    background-color: #1b1b1e;
+    color: white;
+&#125;
+section.active a&#123;
+    transition:  2s ease-in-out;
+    transition-delay: 0.5s;
+    color: white;
+&#125;
+section.active .year&#123;
+    color: white;
+&#125;
+section.active .theme&#123;
+    color: white;
+&#125;
+section.active #dark&#123;
+    opacity: 0;
+&#125;
+section.active #light&#123;
+    opacity: 1;
+&#125;
+header&#123;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+&#125;
+.year&#123;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    letter-spacing: 0.1em;
+&#125;
+.logo&#123;
+    margin-left: 50px;
+&#125;
+.logo a&#123;
+    text-decoration: none;
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+&#125;
+header ul&#123;
+    list-style: none;
+    display: flex;
+    margin-right: 50px;
+&#125;
+header ul li&#123;
+    margin: 0 13px;
+&#125;
+header ul li a&#123;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+&#125;
+.heroImg&#123;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 70vh;
+    width: 350px;
+    background: url('hero.jpg') no-repeat 50% 50%;
+    background-size: cover;
+    opacity: 0.8s;
+    transition: 1s ease-in-out;
+&#125;
+.heroImg:hover&#123;
+    transition: 1s ease-in-out;
+    opacity: 1;
+&#125;
+.container&#123;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    height: 100vh;
+&#125;
+.container p&#123;
+    z-index: 25;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    text-align: center;
+&#125;
+.container h1&#123;
+    font-family: 'Inter', sans-serif;
+    font-size: 100px;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.05em;
+&#125;
+.h1animate&#123;
+    z-index: 100;
+&#125;
+.social&#123;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 300px;
+    height: 50px;
+&#125;
+.social a&#123;
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+&#125;
+.theme&#123;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    align-items: center;
+&#125;
+#dark&#123;
+    cursor: pointer;
+&#125;
+#light&#123;
+    cursor: pointer;
+    opacity: 0;
+&#125;
+section a&#123;
+    transition: 2s ease-in-out;
+&#125;
+@media(max-width: 706px)&#123;
+    .container p&#123;
+        font-size: 13px;
+    &#125;
+    .social&#123;
+        width: 200px;
+    &#125;
+    .social a&#123;
+        font-size: 8px;
+    &#125;
+    .container h1&#123;
+        font-size: 80px;
+    &#125;
+    header&#123;
+        height: 80px;
+    &#125;
+    .logo&#123;
+        margin-left: 20px;
+    &#125;
+    header ul&#123;
+        margin-right: 20px;
+    &#125;
+&#125;
+@media (max-width: 462px)&#123;
+    .container&#123;
+        margin-right: 20px;
+        margin-left: 40px ;
+    &#125;
+&#125;
 </code></pre></div>
     </div>
     <div class="code-section">
@@ -42,7 +315,95 @@ import ProjectAnimation from '../components/ProjectAnimation.astro';
         <span class="code-title">JavaScript</span>
         <button class="copy-btn" onclick="copyCode('js-code')">Copy</button>
       </div>
-      <div class="code-content" id="js-code"><pre><code>// JavaScript code for project 002
+      <div class="code-content" id="js-code"><pre><code>const team = [
+    &#123; name: "Ava Sinclair", role: "Creative Director" &#125;,
+    &#123; name: "Emma Bennett", role: "Brand Strategist" &#125;,
+    &#123; name: "Zoe Clementine", role: "Lead Designer" &#125;,
+    &#123; name: "Mia Thompson", role: "Marketing Specialist" &#125;,
+];
+
+const cursor = document.querySelector('.cursor');
+const cursorIcon = cursor.querySelector('i');
+
+const cursorWidth = cursor.offsetWidth / 2;
+const cursorHeight = cursor.offsetHeight / 2;
+
+let currentSlide = 1;
+const totalSlides = 4;
+
+const updateCursorClass = (xPosition) => &#123;
+    const halfPageWidth = window.innerWidth / 2;
+    if (xPosition &gt; halfPageWidth) &#123;
+        if (currentSlide &lt; totalSlides) &#123;
+            cursorIcon.classList.remove('ph-arrow-left');
+            cursorIcon.classList.add('ph-arrow-right');
+            cursor.style.display = '';
+        &#125; else &#123;
+            cursor.style.display = 'none';
+        &#125;
+    &#125; else &#123;
+        if (currentSlide &gt; 1) &#123;
+            cursorIcon.classList.remove('ph-arrow-right');
+            cursorIcon.classList.add('ph-arrow-left');
+            cursor.style.display = '';
+        &#125; else &#123;
+            cursor.style.display = 'none';
+        &#125;
+    &#125;
+&#125;
+
+document.addEventListener('mousemove', (e) => &#123;
+    gsap.to(cursor, &#123;
+        x: e.clientX - cursorWidth,
+        y: e.clientY - cursorHeight,
+        duration: 1,
+        ease: 'power3.out'
+    &#125;);
+
+    updateCursorClass(e.clientX);
+&#125;);
+
+const updateInfo = (slideNumber) => &#123;
+    const member = team[slideNumber - 1];
+    document.querySelector('.info .name').textContent = member.name;
+    document.querySelector('.info .role').textContent = member.role;
+&#125;;
+
+const animateSlide = (slideNumber, reveal) => &#123;
+    const marquee = document.querySelector(`.t-${slideNumber}.marquee-wrapper`);
+    const img = document.getElementById(`t-${slideNumber}`);
+    const clipPathValue = reveal ? 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)' : 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)';
+
+    gsap.to(marquee, &#123; clipPath: clipPathValue, duration: 1, ease: 'power4.out', delay: 0.3 &#125;);
+    gsap.to(img, &#123; clipPath: clipPathValue, duration: 1, ease: 'power4.out' &#125;);
+&#125;;
+
+updateInfo(currentSlide);
+
+const handleRightClick = () => &#123; 
+    if (currentSlide &lt; totalSlides) &#123;
+        animateSlide(currentSlide + 1, true);
+        currentSlide++;
+        updateInfo(currentSlide);
+    &#125;
+&#125;
+
+const handleLeftClick = () => &#123;
+    if (currentSlide &gt; 1) &#123;
+        animateSlide(currentSlide, false);
+        currentSlide--;
+        updateInfo(currentSlide);
+    &#125;
+&#125;
+
+document.addEventListener('click', (e) => &#123;
+    const halfPageWidth = window.innerWidth / 2;
+    if (e.clientX &gt; halfPageWidth) &#123;
+        handleRightClick();
+    &#125; else &#123;
+        handleLeftClick();
+    &#125;
+&#125;);
 </code></pre></div>
     </div>
   </div>
